@@ -1,0 +1,13 @@
+# The API key file. NEVER remove this line (directives §3.2).
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.venv/
+
+# Notebook checkpoints and OS files
+.ipynb_checkpoints/
+.DS_Store
