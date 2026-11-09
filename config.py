@@ -11,3 +11,4 @@ MAX_REQUESTS_PER_SESSION = 30   # usage cap required by directives §3.2
 NUM_QUESTIONS = 4               # main questions per interview
 MAX_FOLLOWUPS = 3               # adaptive follow-ups per interview
 TEMPERATURE = 0.4               # interviewer creativity (feedback uses 0.2)
+MAX_SCORE = 10                  # overall score scale (1 to MAX_SCORE)
