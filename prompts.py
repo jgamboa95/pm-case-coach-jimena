@@ -29,7 +29,9 @@ INTERVIEWER_PROMPTS = {"V1": INTERVIEWER_V1, "V2": INTERVIEWER_V1}  # same for n
 FEEDBACK_V1 = """You are an experienced PM interview coach. Read the interview
 transcript and return a feedback report. Each weakness must use one of the
 allowed categories and quote the part of the answer that shows it.
-Be specific and honest; do not inflate the score."""
+Be specific and honest; do not inflate the score.
+Give overall_score as a whole number from 1 to 10, where 10 is an
+exceptional, hire-ready answer and 5 is average."""
 
 # V2: few-shot + retrieved rubric. Compared against V1 in eval/evaluation.ipynb.
 FEEDBACK_V2 = FEEDBACK_V1 + """
