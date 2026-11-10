@@ -27,7 +27,7 @@ class Weakness(BaseModel):
 
 
 class FeedbackReport(BaseModel):
-    overall_score: int          # 1 to 5, clamped in app.py
+    overall_score: int          # 1 to 10, clamped in app.py
     strengths: list[str]
     weaknesses: list[Weakness]
     recommendations: list[str]
