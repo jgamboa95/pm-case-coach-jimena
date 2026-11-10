@@ -135,7 +135,10 @@ if ss.finished:
                 ss.report = get_feedback(transcript)
         report = ss.get("report")
         if report is None:
-            st.error("We couldn't build your report this time. Please try again in a minute.")
+            st.error("We couldn't build your report this time.")
+            if st.button("Try again"):
+                ss.pop("report", None)
+                st.rerun()
         else:
             st.subheader(f"Overall: {report.overall_score} / {MAX_SCORE}")
             st.markdown("**Strengths**")
