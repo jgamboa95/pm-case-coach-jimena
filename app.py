@@ -72,7 +72,7 @@ def get_feedback(transcript):
                     response_schema=FeedbackReport))
             ss.token_log.append(("feedback", resp.usage_metadata.total_token_count))
             report = FeedbackReport.model_validate_json(resp.text)
-            report.overall_score = min(max(report.overall_score, 1), 5)
+            report.overall_score = min(max(report.overall_score, 1), MAX_SCORE)
             return report
         except ValidationError:
             continue          # bad JSON: try once more
@@ -137,7 +137,7 @@ if ss.finished:
         if report is None:
             st.error("We couldn't build your report this time. Please try again in a minute.")
         else:
-            st.subheader(f"Overall: {report.overall_score} / 5")
+            st.subheader(f"Overall: {report.overall_score} / {MAX_SCORE}")
             st.markdown("**Strengths**")
             for s in report.strengths:
                 st.write("- " + s)
