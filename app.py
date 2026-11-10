@@ -15,7 +15,7 @@ import streamlit as st
 from google import genai
 from google.genai import types
 from pydantic import ValidationError
-from config import CHAT_MODEL, TEMPERATURE, MAX_REQUESTS_PER_SESSION
+from config import CHAT_MODEL, TEMPERATURE, MAX_REQUESTS_PER_SESSION, MAX_SCORE
 from prompts import INTERVIEWER_PROMPTS, FEEDBACK_PROMPTS, ACTIVE_VERSION
 from schemas import FeedbackReport
 from tools import get_question, get_rubric
@@ -75,11 +75,11 @@ def get_feedback(transcript):
             report.overall_score = min(max(report.overall_score, 1), MAX_SCORE)
             return report
         except ValidationError:
-            continue          # bad JSON: try once more
-        except Exception:
-            time.sleep(2)     # API error: wait and retry
+            continue  # bad JSON: try once more
+        except Exception as e:
+            print(f"Feedback error: {type(e).__name__}: {e}")
+            time.sleep(2)  # API error: wait and retry
     return None
-
 
 # ---- sidebar: setup and controls ----
 with st.sidebar:
